@@ -64,7 +64,7 @@ T1:AddToggle({
     for i, v in pairs(game:GetService("Workspace").Blocks.Block:GetDescendants()) do
                 if v.Name == "Wedge" or v.Name == "Part" or v.Name == "Star" then
                     if v.BrickColor == game:GetService("Players").LocalPlayer.PlayerGui.inGameGui.Frame.Color.BackgroundColor then
-                        OrionLib:Teleport(v)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Position
                     end
                 end
             end
