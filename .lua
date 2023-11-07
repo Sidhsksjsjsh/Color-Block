@@ -28,7 +28,7 @@ end end)
 local TweenService = game:GetService("TweenService")
 local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/NMEHkVTb"))()
 local Window = OrionLib:MakeWindow({Name = "VIP Turtle Hub V3", HidePremium = false, SaveConfig = false, ConfigFolder = "TurtleFi"})
-
+local workspace = game:GetService("Workspace")
 local T1 = Window:MakeTab({
 Name = "Farm",
 Icon = "rbxassetid://",
@@ -41,6 +41,8 @@ T1:AddToggle({
   Default = false,
   Callback = function(Value)
       _G.TweenFarm = Value
+      workspace.Gravity = 0
+
     while wait() do
       if _G.TweenFarm == false then break end
     for i, v in pairs(game:GetService("Workspace").Blocks.Block:GetDescendants()) do
@@ -59,6 +61,8 @@ T1:AddToggle({
   Default = false,
   Callback = function(Value)
       _G.TPFarm = Value
+      workspace.Gravity = 0
+
     while wait() do
       if _G.TPFarm == false then break end
     for i, v in pairs(game:GetService("Workspace").Blocks.Block:GetDescendants()) do
