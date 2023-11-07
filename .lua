@@ -43,7 +43,7 @@ T1:AddToggle({
       _G.TweenFarm = Value
     while wait() do
       if _G.TweenFarm == false then break end
-    for i, v in pairs(game:GetService("Workspace").Blocks.Block:GetChildren()) do
+    for i, v in pairs(game:GetService("Workspace").Blocks.Block:GetDescendants()) do
                 if v.Name == "Wedge" or v.Name == "Part" or v.Name == "Star" then
                     if v.BrickColor == game:GetService("Players").LocalPlayer.PlayerGui.inGameGui.Frame.Color.BackgroundColor then
                         TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), {CFrame = v.Position}):Play()
@@ -61,7 +61,7 @@ T1:AddToggle({
       _G.TPFarm = Value
     while wait() do
       if _G.TPFarm == false then break end
-    for i, v in pairs(game:GetService("Workspace").Blocks.Block:GetChildren()) do
+    for i, v in pairs(game:GetService("Workspace").Blocks.Block:GetDescendants()) do
                 if v.Name == "Wedge" or v.Name == "Part" or v.Name == "Star" then
                     if v.BrickColor == game:GetService("Players").LocalPlayer.PlayerGui.inGameGui.Frame.Color.BackgroundColor then
                         OrionLib:Teleport(v)
