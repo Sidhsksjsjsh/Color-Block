@@ -90,6 +90,14 @@ end
   end    
 })
 
+workspace.GameInfo.GameMode:GetPropertyChangedSignal("Value"):Connect(function()
+	OrionLib:MakeNotification({Name = "GameMode Changed",Content = "Current Game Mode: " .. tostring(workspace.GameInfo.GameMode.Value),Image = "rbxassetid://13030062874",Time = 5})
+end)
+
+workspace.GameInfo.Stage:GetPropertyChangedSignal("Value"):Connect(function()
+	OrionLib:MakeNotification({Name = "Stage Changed",Content = "Current Stage: " .. tostring(workspace.GameInfo.Stage.Value),Image = "rbxassetid://13030062874",Time = 5})
+end)
+
 while wait() do
     gamei:Set(string.format("Game Mode: %s\nStage: %s",workspace.GameInfo.GameMode.Value,workspace.GameInfo.Stage.Value),"")
 end
