@@ -13,6 +13,12 @@ Icon = "rbxassetid://",
 PremiumOnly = false
 })
 
+local T2 = Window:MakeTab({
+Name = "Egg",
+Icon = "rbxassetid://",
+PremiumOnly = false
+})
+
 local gamei = T1:AddParagraph("Game Info","<script>\n	Game Mode: {mode}\nStage: {stage}\n</script>")
 
 --[[T1:AddSlider({
@@ -40,7 +46,7 @@ T1:AddToggle({
     for i, v in pairs(game:GetService("Workspace").Blocks.Block:GetDescendants()) do
                 if v.Name == "Wedge" or v.Name == "Part" or v.Name == "Star" then
                     if v.BrickColor == game:GetService("Players").LocalPlayer.PlayerGui.inGameGui.Frame.Color.BackgroundColor then
-                        TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), {CFrame = CFrame.new(v.Position + Vector3.new(0,5,0))}):Play()
+                        TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), {CFrame = CFrame.new(v.Position + Vector3.new(0,10,0))}):Play()
                     end
                 end
             end
@@ -60,11 +66,33 @@ T1:AddToggle({
     for i, v in pairs(game:GetService("Workspace").Blocks.Block:GetDescendants()) do
                 if v.Name == "Wedge" or v.Name == "Part" or v.Name == "Star" then
                     if v.BrickColor == game:GetService("Players").LocalPlayer.PlayerGui.inGameGui.Frame.Color.BackgroundColor then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Position + Vector3.new(0,5,0))
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Position + Vector3.new(0,10,0))
                     end
                 end
             end
 end
+  end    
+})
+
+T2:AddDropdown({
+  Name = "Select egg",
+  Default = "Common",
+  Options = {"Common","Rare","Epic"},
+  Callback = function(Value)
+    _G.EggType = Value
+  end    
+})
+
+T2:AddToggle({
+  Name = "Hatch",
+  Default = false,
+  Callback = function(Value)
+      _G.Hatch = Value
+      
+    while wait() do
+      if _G.Hatch == false then break end
+        game:GetService("ReplicatedStorage")["RemoteFunction"]["Lottery"]["LotteryRF"]:InvokeServer("draw",_G.EggType)
+    end
   end    
 })
 
