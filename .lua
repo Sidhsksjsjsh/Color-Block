@@ -13,9 +13,9 @@ Icon = "rbxassetid://",
 PremiumOnly = false
 })
 
-local gamei = T1:AddParagraph("Game Info","Loading Content...")
+local gamei = T1:AddParagraph("Game Info","<script>\n	Game Mode: {mode}\nStage: {stage}\n</script>")
 
-T1:AddSlider({
+--[[T1:AddSlider({
   Name = "Height",
   Min = 0,
   Max = 20,
@@ -27,7 +27,7 @@ T1:AddSlider({
     _G.Height = Value
  end    
 })
-
+]]
 T1:AddToggle({
   Name = "Tween Farm",
   Default = false,
@@ -40,7 +40,7 @@ T1:AddToggle({
     for i, v in pairs(game:GetService("Workspace").Blocks.Block:GetDescendants()) do
                 if v.Name == "Wedge" or v.Name == "Part" or v.Name == "Star" then
                     if v.BrickColor == game:GetService("Players").LocalPlayer.PlayerGui.inGameGui.Frame.Color.BackgroundColor then
-                        TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), {CFrame = CFrame.new(v.Position + Vector3.new(0,tonumber(_G.Height),0))}):Play()
+                        TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), {CFrame = CFrame.new(v.Position + Vector3.new(0,5,0))}):Play()
                     end
                 end
             end
@@ -60,7 +60,7 @@ T1:AddToggle({
     for i, v in pairs(game:GetService("Workspace").Blocks.Block:GetDescendants()) do
                 if v.Name == "Wedge" or v.Name == "Part" or v.Name == "Star" then
                     if v.BrickColor == game:GetService("Players").LocalPlayer.PlayerGui.inGameGui.Frame.Color.BackgroundColor then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Position + Vector3.new(0,tonumber(_G.Height),0))
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Position + Vector3.new(0,5,0))
                     end
                 end
             end
